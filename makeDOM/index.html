@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const div = document.createElement('div');
+        const p =document.createElement('p');
+        const h2 = document.createElement('h2');
+        div.appendChild(p);
+        div.appendChild(h2);
+        p.textContent = '안녕하세요';
+        h2.textContent = '제목';
+        console.log(div);
+        document.body.appendChild(div);
+    </script>
+</body>
+</html>

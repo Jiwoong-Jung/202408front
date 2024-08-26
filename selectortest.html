@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="list">
+        <li class="item1">item1</li>
+        <li class="item2">item2</li>
+        <li class="item3">item3</li>
+        <li class="item4">item4</li>
+    </ul>
+    <script>
+        const list = document.querySelector('.list');
+        const items = list.children;
+        // console.log(items[2]);
+        const item2 = document.querySelector('.item2');
+        item2.style.color = 'red';
+        item2.innerHTML = 'Hello World!';
+        console.log(item2.parentElement);
+        console.log(item2.previousElementSibling);
+        console.log(item2.nextElementSibling);
+    </script>
+</body>
+
+</html>
