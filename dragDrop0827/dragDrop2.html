@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #data, #newContainer {
+            width: 450px;
+            height: 100px;
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <div id="data">bbb</div>
+    <div id="newContainer">Drop here to remove</div>
+    <img draggable="true" id="item1" src="img/img1.png" width="40px" height="40px"/>
+    <img draggable="true" id="item2" src="img/img2.png" width="40px" height="40px"/>
+    <img draggable="true" id="item3" src="img/img3.png" width="40px" height="40px"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#data, #newContainer").on("dragover", function(e) {
+                e.preventDefault();
+            });
+
+            $("#item1").on("dragstart", function(e) {
+                e.originalEvent.dataTransfer.effectAllowed = 'move';
+                e.originalEvent.dataTransfer.setData("text", e.target.id);
+            });
+            $("#item2").on("dragstart", function(e) {
+                e.originalEvent.dataTransfer.effectAllowed = 'move';
+                e.originalEvent.dataTransfer.setData("text", e.target.id);
+            });
+            $("#item3").on("dragstart", function(e) {
+                e.originalEvent.dataTransfer.effectAllowed = 'move';
+                e.originalEvent.dataTransfer.setData("text", e.target.id);
+            });
+
+            $("#data, #newContainer").on("drop", function(e) {
+                e.preventDefault();
+                const data = e.originalEvent.dataTransfer.getData("text");
+                $(this).append($("#" + data));
+            });
+        });
+    </script>
+</body>
+</html>
