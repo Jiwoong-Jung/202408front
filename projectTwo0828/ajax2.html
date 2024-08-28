@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="ajaxButton">클릭</button>
+    <script>
+        document.getElementById("ajaxButton").onclick = () => {
+            makeRequest();
+        }
+        function makeRequest() {
+            httpRequest = new XMLHttpRequest();
+
+            if (!httpRequest) {
+                alert("Giving up :( Cannot create an XMLHTTP instance");
+                return false;
+            }
+            httpRequest.open('POST', 'http://localhost:3000/posts');
+            const data = { id: 8, title: '자바', author: '한글이', price: 5000 };
+            httpRequest.send(JSON.stringify(data));
+            httpRequest.onreadystatechange = alertContents;
+
+            function alertContents() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200 || httpRequest.status === 201) {
+                        const response = JSON.parse(httpRequest.responseText);
+                        alert(response.computedString);
+                    } else {
+                        alert('There was a problem with the request.');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

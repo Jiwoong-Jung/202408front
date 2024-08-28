@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Ajax</h2>
+    <p><button onclick="sendRequest()">요청 보내기</button></p>
+    <hr>
+    <p id="text"></p>
+    <script>
+        function sendRequest() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://localhost:3000/posts', true);
+            xhr.send();
+            //
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('text').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Error!');
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

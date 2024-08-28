@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre></pre>
+    <script>
+        // XMLHttpRequest 객체 생성
+        const xhr = new XMLHttpRequest();
+
+        // HTTP 요청 초기화 - todos 리소스에 새로운 todo 생성
+        xhr.open('POST', 'http://localhost:3000/posts');
+
+        // 요청 body에 담아 서버로 전송할 페이로드의 MIME 타입 지정
+        xhr.setRequestHeader('content-type', 'application/json');
+
+        // HTTP 요청 전송 - 새로운 todo 생성 위해 페이로드 전송 필요
+        xhr.send(JSON.stringify({ id: 7, content: 'Angular', completed: false }));
+
+        // HTTP 요청이 성공적으로 완료됐다면 실행할 이벤트
+        xhr.onload = () => {
+            if (xhr.status === 200 || xhr.status === 201) {
+                document.querySelector('pre').textContent = xhr.response;
+            } else {
+                console.error('Error', xhr.status, xhr.statusText);
+            }
+        };
+    </script>
+</body>
+
+</html>
