@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--  Vue.js와 연결하는 요소 -->
+    <div id="app">
+        <input type="number" v-model.number="number">
+        <button @click="calculateSum">합계산</button>
+        <p> 1 부터 {{ number }} 까지의 합: {{ sum }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script>
+        //Vue 인스턴스
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                sum: 0
+            },
+            methods: {
+                calculateSum() {
+                    this.sum = (this.number * (this.number + 1)) / 2;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

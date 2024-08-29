@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--  Vue.js와 연결하는 요소 -->
+    <div id="app">
+        <p>{{ counter }}</p>
+        <button @click="increaseCounter">증가</button>
+        <button @click="decreaseCounter">감소</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script>
+        //Vue 인스턴스
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                increaseCounter() {
+                    this.counter++;
+                },
+                decreaseCounter() {
+                    this.counter--;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

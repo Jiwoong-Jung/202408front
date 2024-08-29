@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--  Vue.js와 연결하는 요소 -->
+    <div id="app">
+        <input type="number" v-model.number="number">
+        <button @click="calculateSum">합계산</button>
+        <p> 1 부터 {{ number }} 까지의 합: {{ sum }}</p>
+        <p v-if="errorMessage">{{ errorMessage }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script>
+        //Vue 인스턴스
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                sum: 0,
+                errorMessage: ''
+            },
+            methods: {
+                calculateSum() {
+                    if (this.number <= 0) {
+                        this.errorMessage = '0과 음수는 입력할 수 없습니다.';
+                        this.sum = 0;
+                    } else {
+                        this.errorMessage = '';
+                        this.sum = (this.number * (this.number + 1)) / 2;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
